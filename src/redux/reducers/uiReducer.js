@@ -7,6 +7,8 @@ import {
   SET_ERROR,
   SET_ERRORS_SIGNUP_SELLER,
   SET_ERROR_ITEM,
+  RESET_PASS_SUCCESS,
+  SEND_PASS_LINK_SUCCESS,
 } from "../types";
 
 const initialState = {
@@ -72,6 +74,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         signUpSuccess: true,
+      };
+    case RESET_PASS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case SEND_PASS_LINK_SUCCESS:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

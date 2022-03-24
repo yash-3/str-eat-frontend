@@ -210,7 +210,7 @@ export const fetchAddress = (userData, history) => (dispatch) => {
     .get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
         address: location,
-        key: "AIzaSyC881hvDpN53-FihzS8eaGSaVtkFuYGfCg"
+        key: process.env.REACT_APP_GOOGLE_API_KEY
       },
     })
     .then((result) => {

@@ -10,25 +10,13 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import hamBurgerIcon from "../images/hamburger.jpg";
+
 
 
 import axios from "../util/axios";
 import axiosNewInstance from "axios";
-
-import {
-    SIGNUP_SUCCESS,
-    LOADING_UI,
-    SET_ERRORS,
-    SERVER_ERROR,
-    CLEAR_ERRORS,
-    LOADING_USER,
-    SET_USER,
-    SET_ERROR,
-    SET_UNAUTHENTICATED,
-    SET_ERRORS_SIGNUP_SELLER,
-  } from "../redux/types";
+import { sendResetPassLinkAction } from "../redux/actions/authActions";
 
 //custom-hook
 import useForm from "../hooks/forms";
@@ -54,42 +42,22 @@ export default function ForgetPassComp() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  
-    const forgetPasswordHandle = (props) => {
-        const userData = { email: inputs.email };
-        console.log("<>>",userData); 
-        const resetPassAction = (userData) => {
 
-            axios
-                .post("/auth/forgotPassword", JSON.stringify(userData))
-                .then((res) => {
+  const sendResetPassLinkEmail = (props) => {
 
-                    console.log(res);
-                    // history.push("/");
-                })
-                .catch((err) => {
-                    if (err.response) {
-                        dispatch({
-                            type: SET_ERROR,
-                            payload: err.response.data,
-                        });
-                    } else {
-                        dispatch({
-                            type: SERVER_ERROR,
-                        });
-                    }
-                });
-            console.log("<>>");
-        };
-      
-        resetPassAction();
-    };
+
+    const userData = { email: inputs.email };
+    console.log("<>>", userData);
+
+    dispatch(sendResetPassLinkAction(userData, history));
+
+  };
 
   const { inputs, handleInputChange, handleSubmit } = useForm(
     {
       email: "",
     },
-    forgetPasswordHandle
+    sendResetPassLinkEmail
   );
 
   let incorrectCredentialsError = null;
@@ -113,7 +81,7 @@ export default function ForgetPassComp() {
           Forget Password
         </Typography>
         <form noValidate onSubmit={handleSubmit}>
-       
+
           <TextField
             id="email"
             name="email"
@@ -123,7 +91,7 @@ export default function ForgetPassComp() {
             value={inputs.email}
             fullWidth
           />
-          
+
           {serverError && (
             <Typography variant="body2" className={classes.customError}>
               {"server error, please try again"}
@@ -149,7 +117,7 @@ export default function ForgetPassComp() {
             className={classes.button}
             disabled={loading}
           >
-            Forget Password
+            Send reset password Email
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}
@@ -159,10 +127,10 @@ export default function ForgetPassComp() {
             <Link to="/">Forgot Password</Link>
           </small> */}
           <br />
-          
+
         </form>
 
-   
+
       </Grid>
       <Grid item sm />
     </Grid>
