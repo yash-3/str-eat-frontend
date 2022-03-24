@@ -9,6 +9,8 @@ import {
   SET_ERROR,
   SET_UNAUTHENTICATED,
   SET_ERRORS_SIGNUP_SELLER,
+  SEND_PASS_LINK_SUCCESS,
+  RESET_PASS_SUCCESS,
 } from "../types";
 
 import axios from "../../util/axios";
@@ -39,6 +41,60 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       }
     });
 };
+
+export const sendResetPassLinkAction = (userData, history) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  console.log(JSON.stringify(userData));
+  axios
+    .post("/auth/sendResetPassLink", userData)
+    .then((res) => {
+      dispatch({
+        type: SEND_PASS_LINK_SUCCESS,
+      });
+      console.log(res);
+      history.push("/");
+    })
+    .catch((err) => {
+      if (err.response) {
+        dispatch({
+          type: SET_ERROR,
+          payload: err.response.data,
+        });
+      } else {
+        dispatch({
+          type: SERVER_ERROR,
+        });
+      }
+    });
+  console.log("<>>");
+};
+
+export const resetPasswordAction = (userData, history) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/auth/resetPassword", userData)
+    .then((res) => {
+      dispatch({
+        type: RESET_PASS_SUCCESS,
+      });
+      console.log(res);
+      history.push("/");
+    })
+    .catch((err) => {
+      if (err.response) {
+        dispatch({
+          type: SET_ERROR,
+          payload: err.response.data,
+        });
+      } else {
+        dispatch({
+          type: SERVER_ERROR,
+        });
+      }
+    });
+}
+
+
 
 export const loginAction = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
@@ -88,7 +144,7 @@ export const signupSeller = (newSellerData, history) => (dispatch) => {
     .get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
         address: location,
-        key: "AIzaSyC881hvDpN53-FihzS8eaGSaVtkFuYGfCg"
+        key: process.env.REACT_APP_GOOGLE_API_KEY 
       },
     })
     .then((result) => {

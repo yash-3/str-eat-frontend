@@ -42,7 +42,7 @@ import sellerDash from "./pages/sellerDashboard";
 import cart from "./pages/cart";
 import orders from "./pages/orders";
 import ForgetPassComp from "./pages/forgetPassword"
-
+import ResetPasswordPage from "./pages/resetPasswordPage";
 const theme = createMuiTheme(themeFile);
 
 const token = localStorage.jwt;
@@ -71,6 +71,8 @@ function App() {
             <Route exact path="/" component={home} />
             <AuthRoute exact path="/login" component={login} />
             <AuthRoute exact path="/forgetPassword" component={ForgetPassComp} />
+            <AuthRoute exact path="/auth/resetPassword/:token" component={ResetPasswordPage} />
+
 
             <AuthRoute exact path="/register" component={signup} />
             <AuthRoute exact path="/addrestaurant" component={addRestaurant} />

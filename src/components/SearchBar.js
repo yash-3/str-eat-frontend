@@ -102,7 +102,7 @@ export default function CustomizedInputBase(props) {
     };
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyC881hvDpN53-FihzS8eaGSaVtkFuYGfCg`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
       )
       .then((result) => {
         console.log(result.data);
