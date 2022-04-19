@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +23,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var passRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}$/;
+var passwordErrorText = "Password must contain at least 6 upto 20 characters with atleast one numeric digit, one uppercase and one lowercase letter";
+var emailErrorText = "Enter Valid Email";
+const validateRegex = (inputStr, regexType) => {
+  return regexType.test(inputStr);
+};
 export default function Register() {
   const classes = useStyles();
 
@@ -31,6 +38,7 @@ export default function Register() {
   const history = useHistory();
 
   const signupHandle = (props) => {
+
     const newUserData = {
       email: inputs.email,
       firstName: inputs.firstName,
@@ -78,6 +86,17 @@ export default function Register() {
     }
   }
 
+  const [isValidEmail, onChangeEmail] = useState("");
+  const [isValidPass, onChangePassword] = useState("");
+
+
+
+  useEffect(() => { 
+    console.log("---",inputs.email, inputs.password ,isValidEmail, ">",isValidPass);
+      console.log();
+  }, [isValidEmail, isValidPass]);
+
+
   return (
     <Grid container className={classes.form}>
       <Grid item sm />
@@ -88,7 +107,7 @@ export default function Register() {
             🍕
           </span>
         </Typography>
-        <form noValidate onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}   >
           <TextField
             id="firstName"
             name="firstName"
@@ -117,27 +136,35 @@ export default function Register() {
             id="email"
             name="email"
             label="Email"
-            onChange={handleInputChange}
+            onChange={(e) => {  handleInputChange(e);  }}
+            inputMode="email"
             value={inputs.email}
             className={classes.textField}
             fullWidth
-            helperText={emailError}
-            error={emailError ? true : false}
+            helperText={isValidEmail === false ? emailErrorText : null}
+            error={passwordError || isValidEmail === false ? true : false}
             required
+            onBlur={(e) => { onChangeEmail(validateRegex(inputs.email, emailRegex)) }}
+                 
           />
+
+
           <TextField
             id="password"
             name="password"
             type="password"
             label="Password"
-            onChange={handleInputChange}
+            onChange={(e) => { onChangePassword(validateRegex(inputs.password, passRegex));  handleInputChange(e);   }}
             value={inputs.password}
             className={classes.textField}
-            helperText={passwordError}
-            error={passwordError ? true : false}
+            helperText={isValidPass === false ? passwordErrorText : null}
+            error={passwordError || isValidPass === false ? true : false}
             fullWidth
             required
+            onBlur={(e) => { onChangePassword(validateRegex(inputs.password, passRegex))  }}
+
           />
+
           <TextField
             id="confirmPassword"
             name="confirmPassword"
@@ -146,7 +173,7 @@ export default function Register() {
             onChange={handleInputChange}
             value={inputs.confirmPassword}
             className={classes.textField}
-            helperText={passwordError ? passwordError : confirmPasswordError}
+            helperText={passwordError ? null : confirmPasswordError}
             error={passwordError ? true : confirmPasswordError ? true : false}
             fullWidth
             required
@@ -163,7 +190,8 @@ export default function Register() {
             variant="contained"
             color="primary"
             className={classes.button}
-            disabled={loading}
+            disabled={((isValidEmail === (false || "")) || (isValidPass === (false || "")) || loading || (inputs.password !== inputs.confirmPassword)) ? true : false}
+            
           >
             Sign-up
             {loading && (

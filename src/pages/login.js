@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
 
-  const { loading, serverError, errors, signUpSuccess } = useSelector(
+  const { loading, serverError, errors } = useSelector(
     (state) => state.UI
   );
   const dispatch = useDispatch();

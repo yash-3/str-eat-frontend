@@ -1,36 +1,17 @@
-import React from "react";
-import { useHistory } from "react-router";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-//material-ui
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import Grid from "@material-ui/core/Grid";
+//material-ui
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { useParams } from "react-router-dom";
 //custom-hook
 import useForm from "../hooks/forms";
-
 import { resetPasswordAction } from "../redux/actions/authActions";
-
-import axios from "../util/axios";
-import axiosNewInstance from "axios";
-
-import {
-  SIGNUP_SUCCESS,
-  LOADING_UI,
-  SET_ERRORS,
-  SERVER_ERROR,
-  CLEAR_ERRORS,
-  LOADING_USER,
-  SET_USER,
-  SET_ERROR,
-  SET_UNAUTHENTICATED,
-  SET_ERRORS_SIGNUP_SELLER,
-} from "../redux/types";
 
 const useStyles = makeStyles((theme) => ({
   ...theme.spreadThis,
@@ -69,7 +50,6 @@ export default function ResetPasswordPage() {
   );
 
   // console.log(errors);
-  let emailError = null;
   let passwordError = null;
   let confirmPasswordError = null;
 

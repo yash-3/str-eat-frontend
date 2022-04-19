@@ -1,26 +1,18 @@
-import React from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-//material-ui
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import hamBurgerIcon from "../images/hamburger.jpg";
-
-
-
-import axios from "../util/axios";
-import axiosNewInstance from "axios";
-import { sendResetPassLinkAction } from "../redux/actions/authActions";
-
+import Grid from "@material-ui/core/Grid";
+//material-ui
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 //custom-hook
 import useForm from "../hooks/forms";
-import { loginAction } from "../redux/actions/authActions";
+import hamBurgerIcon from "../images/hamburger.jpg";
+import { sendResetPassLinkAction } from "../redux/actions/authActions";
+
 
 const useStyles = makeStyles((theme) => ({
   ...theme.spreadThis,
@@ -36,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ForgetPassComp() {
   const classes = useStyles();
 
-  const { loading, serverError, errors, signUpSuccess } = useSelector(
+  const { loading, serverError, errors, } = useSelector(
     (state) => state.UI
   );
   const dispatch = useDispatch();
