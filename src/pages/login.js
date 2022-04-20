@@ -14,6 +14,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import hamBurgerIcon from "../images/hamburger.jpg";
 
 
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+
+  const { t } = useTranslation();
+
   const classes = useStyles();
 
   const { loading, serverError, errors } = useSelector(
@@ -66,6 +70,8 @@ export default function Login() {
     if (errors.includes("Verify your email")) verifyEmailError = errors;
   }
 
+
+
   return (
     <Grid container className={classes.form}>
       <Grid item sm />
@@ -76,7 +82,7 @@ export default function Login() {
           className={classes.hamBurger}
         />
         <Typography variant="h3" className={classes.title}>
-          Login
+          { t("Login") }
         </Typography>
         <form noValidate onSubmit={handleSubmit}>
        

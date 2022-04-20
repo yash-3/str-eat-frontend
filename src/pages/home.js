@@ -11,6 +11,7 @@ import HomeStart from "../components/HomeStart";
 import SearchBar from "../components/SearchBar";
 import Spinner from "../util/spinner/spinner";
 import RestaurantContent from "../components/RestaurantContent";
+import { useTranslation } from 'react-i18next';
 
 // import store from "../redux/store";
 // import { fetchRestaurantsByAddress } from "../redux/actions/dataActions";
@@ -34,6 +35,7 @@ const Home = () => {
   const [locationStatus, setLocationStatus] = useState(
     localStorage.getItem("location") ? true : false
   );
+  const { t } = useTranslation();
 
   // let latlng = localStorage.getItem("latlng");
 
@@ -53,8 +55,9 @@ const Home = () => {
           <Grid container direction="column">
             <Grid item>
               <Typography variant="h5" className={classes.center} noWrap>
-                Your favourite food, delivered with StrEAT&nbsp;&nbsp;
-                <span style={{ fontSize: 40 }}>🍽</span>
+                {/* Your favourite food, delivered with StrEAT&nbsp;&nbsp; */}
+                { t("DELIVERY") }
+                  <span style={{ fontSize: 40 }}>🍽</span>
               </Typography>
             </Grid>
             <Grid item className={classes.SearchBar}>

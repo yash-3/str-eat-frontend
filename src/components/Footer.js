@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -43,6 +44,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer() {
   const { authenticated } = useSelector((state) => state.auth);
   const classes = useStyles();
+
+  const { t, i18n } = useTranslation(["translation"]);
+
+  const changeLanguage = (code) => {
+    i18n.changeLanguage(code);
+  };
   return (
     <Grid container direction="row" className={classes.container}>
       <Grid item xs={12} sm={4} className={classes.innerCont}>
@@ -91,6 +98,19 @@ export default function Footer() {
           </>
         )}
       </Grid>
+      <div>
+        <button type="button" onClick={() => changeLanguage("hi")}>
+          {t("translation:hi")}
+        </button>
+
+        <button type="button" onClick={() => changeLanguage("en")}>
+          {t("translation:en")}
+        </button>
+
+        <h1>{t("Login")}</h1>
+
+        <p>{t("DELIVERY")}</p>
+      </div>
       {/* <Grid item xs={12} sm={3} className={classes.innerCont}>
         <Typography variant="h5" component="p">
           FoodHub NewsLetter
