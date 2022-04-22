@@ -1,5 +1,44 @@
 {
-  "DELIVERY": "Inside Hindi",
-  "Login" : "Login IN Hindi",
-  "companyMoto" : "company Moto hindi"
+  "ordering": "ऑर्डर करना",
+  "food": "StrEAT खाना",
+  "company_discription": "कुछ ही क्लिक में अपने पसंदीदा फूड आउटलेट से लिप स्मैकिंग फूड ऑर्डर करें! स्ट्रीट के साथ खुद का इलाज करें!",
+  "company_moto" : "सबसे महत्वपूर्ण चीज़ों पर ध्यान खोए बिना अपने व्यवसाय से अधिक लाभ उठाएं — अपने ग्राहकों को प्रसन्न करना",
+  "enter_location":"आस-पास के रेस्टोरेंट देखने के लिए अपना स्थान दर्ज करें",
+  "for_vendor":"StrEAT व्यापार के लिए",
+  "already_account": "पहले से ही एक खाता है",
+  "here":"यहाँ",
+  "order_history":"ऑर्डर इतिहास",
+  "no_order_present":"कोई ऑर्डर मौजूद नहीं.",
+  "seller_dashboard":"सेलर डैशबोर्ड",
+
+  "Buttons": {
+    "login" : "लॉग इन करें",
+    "get_started": "शुरू करो",
+    "register": "रजिस्टर करें",
+    "logout": "लॉग आउट",
+    "order_now": "अभी ओडर करें",
+    "sign_up": "साइन अप करें",
+    "forgot_password": "पासवर्ड भूल गए",
+    "orders": "ओडर",
+    "cart":"कार्ट",
+    "send_reset_password_email":"रीसेट पासवर्ड के लिए ईमेल भेजें"
+  },
+
+  "OrderCart":{
+    "cancelled":"रद्द",
+    "accepted": "स्वीकृत",
+    "out_for_delivery": "डिलिवरी के लिए रवाना",
+    "completed": "पुरा होना",
+    "ordered_by": "ओडर द्वारा",
+    "ordered_from": "से ऑर्डर किया गया",
+    "call": "कॉल",
+    "address": "पता",
+    "ordered": "ओडर दिया",
+    "placed": "रखा गया",
+    "cancel_order": "आर्डर रद्द",
+    "accept_order": "आर्डर स्वीकार करें",
+    "order_completed": "आर्डर पूरा हुआ",
+    "order":"आर्डर"
+  }
+
 }

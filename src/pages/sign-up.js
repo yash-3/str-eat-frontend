@@ -11,6 +11,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+import { useTranslation } from "react-i18next";
+
 //custom-hook
 import useForm from "../hooks/forms";
 
@@ -97,12 +99,14 @@ export default function Register() {
   }, [isValidEmail, isValidPass]);
 
 
+  const { t, i18n } = useTranslation(["translation"]);
+
   return (
     <Grid container className={classes.form}>
       <Grid item sm />
       <Grid item sm>
         <Typography variant="h3" className={classes.title}>
-          Register{" "}
+        {t("Buttons.register")}
           <span role="img" aria-label="Pizza Emoji">
             🍕
           </span>
@@ -193,14 +197,15 @@ export default function Register() {
             disabled={((isValidEmail === (false || "")) || (isValidPass === (false || "")) || loading || (inputs.password !== inputs.confirmPassword)) ? true : false}
             
           >
-            Sign-up
+            {/* Sign UP */}
+            {t("Buttons.sign_up")}
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}
           </Button>
           <br />
           <small className={classes.small}>
-            Already have an account ? Login <Link to="/login">here</Link>
+          {t("already_account")} ? {t("Buttons.login")}  <Link to="/login">{t("here")}</Link>
           </small>
         </form>
       </Grid>

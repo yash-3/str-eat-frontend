@@ -16,8 +16,6 @@ import hamBurgerIcon from "../images/hamburger.jpg";
 
 import { useTranslation } from 'react-i18next';
 
-
-
 //custom-hook
 import useForm from "../hooks/forms";
 import { loginAction } from "../redux/actions/authActions";
@@ -50,6 +48,7 @@ export default function Login() {
       email: inputs.email,
       password: inputs.password,
     };
+    console.log(userData);
     dispatch(loginAction(userData, history));
   };
 
@@ -82,7 +81,7 @@ export default function Login() {
           className={classes.hamBurger}
         />
         <Typography variant="h3" className={classes.title}>
-          { t("Login") }
+          { t("Buttons.login") }
         </Typography>
         <form noValidate onSubmit={handleSubmit}>
        
@@ -130,14 +129,14 @@ export default function Login() {
             className={classes.button}
             disabled={loading}
           >
-            Login
+            { t("Buttons.login")}
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}
           </Button>
           <br />
           <small className={classes.small}>
-            <Link to="/forgetPassword">Forgot Password</Link>
+            <Link to="/forgetPassword">{ t("Buttons.forgot_password")}</Link>
           </small>
           <br />
       

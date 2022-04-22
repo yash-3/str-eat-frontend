@@ -10,6 +10,8 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
+import { useTranslation } from "react-i18next";
+
 const useStyles = makeStyles((theme) => ({
   ...theme.spreadThis,
   para: {
@@ -47,10 +49,12 @@ const Orders = (props) => {
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const { t, i18n } = useTranslation(["translation"]);
+
   return (
     <>
       <Typography variant="h5" className={classes.title}>
-        Order History
+      {t("order_history")}
       </Typography>
       <Grid item container direction="row">
         <Grid item xs={12} sm={1} />
@@ -64,7 +68,7 @@ const Orders = (props) => {
                   </Grid>
                 ))
               ) : (
-                <p className={classes.para}>No Orders present.</p>
+                <p className={classes.para}>{t ("no_order_present")}</p>
               )
             ) : null}
           </Grid>

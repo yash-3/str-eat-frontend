@@ -13,6 +13,7 @@ import useForm from "../hooks/forms";
 import hamBurgerIcon from "../images/hamburger.jpg";
 import { sendResetPassLinkAction } from "../redux/actions/authActions";
 
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   ...theme.spreadThis,
@@ -60,6 +61,8 @@ export default function ForgetPassComp() {
     if (errors.includes("Verify your email")) verifyEmailError = errors;
   }
 
+  const { t, i18n } = useTranslation(["translation"]);
+
   return (
     <Grid container className={classes.form}>
       <Grid item sm />
@@ -70,7 +73,7 @@ export default function ForgetPassComp() {
           className={classes.hamBurger}
         />
         <Typography variant="h3" className={classes.title}>
-          Forget Password
+        {t("Buttons.forgot_password")}
         </Typography>
         <form noValidate onSubmit={handleSubmit}>
 
@@ -109,7 +112,7 @@ export default function ForgetPassComp() {
             className={classes.button}
             disabled={loading}
           >
-            Send reset password Email
+            {t("Buttons.send_reset_password_email")}
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}

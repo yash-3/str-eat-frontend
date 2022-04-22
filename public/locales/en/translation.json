@@ -1,5 +1,43 @@
 {
-  "DELIVERY": "delivery inEnglish",
-  "Login" : "Loginnnn",
-  "companyMoto" : "Get more out of your business, without losing focus on what is most important — delighting your customers"
+  "ordering": "ORDERING",
+  "food": "StrEAT Food",
+  "company_discription": "Order Lip Smacking food from your favourite food outlet withing a matter of a few clicks! TrEAT Yourself with StrEAT!",
+  "company_moto" : "Get more out of your business, without losing focus on what is most important — delighting your customers",
+  "enter_location":"Enter your location to view nearby restaurants",
+  "for_vendor":"StrEAT for Business",
+  "already_account": "Already have an account",
+  "here":"here",
+  "order_history":"Order History",
+  "no_order_present":"No Orders present.",
+  "seller_dashboard":"Seller Dashboard",
+  
+  "Buttons": {
+    "login" : "LOGIN",
+    "get_started": "GET STARTED",
+    "register": "REGISTER",
+    "logout": "LOGOUT",
+    "order_now": "ORDER NOW",
+    "sign_up": "SIGN-UP",
+    "forgot_password": "Forgot Password",
+    "orders": "Orders",
+    "cart":"Cart",
+    "send_reset_password_email":"Send reset password Email"
+  },
+
+  "OrderCart":{
+    "cancelled":"Cancelled",
+    "accepted": "Accepted",
+    "out_for_delivery": "Out For Delivery",
+    "completed": "Completed",
+    "ordered_by": "Ordered By",
+    "ordered_from": "Ordered From",
+    "call": "Call",
+    "address": "Address",
+    "ordered": "Ordered",
+    "placed": "Placed",
+    "cancel_order": "Cancel Order",
+    "accept_order": "Accept Order",
+    "order_completed": "Order Completed",
+    "order":"Order"
+  }
 }

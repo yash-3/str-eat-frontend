@@ -6,9 +6,7 @@ import App from "./App";
 import "./i18";
 
 ReactDOM.render(
-  // <Suspense fallback={null}>
-  //   <App />
-  // </Suspense>,
+  
   <Suspense fallback={null}>
     <React.StrictMode>
       <App />

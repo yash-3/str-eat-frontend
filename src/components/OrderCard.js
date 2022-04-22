@@ -14,6 +14,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import SummaryExpansion from "./FilterExpansion";
 import { changeOrderStatus } from "../redux/actions/dataActions";
 
+import { useTranslation } from "react-i18next";
+
 const useStyles = makeStyles((theme) => ({
   ...theme.spreadThis,
   para: {
@@ -66,6 +68,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const OrderCard = (props) => {
   const order = props.order;
   const role = props.role;
@@ -73,9 +77,11 @@ const OrderCard = (props) => {
   dayjs.extend(relativeTime);
   const dispatch = useDispatch();
 
+  const { t, i18n } = useTranslation(["translation"]);
+
   const handleCancel = () => {
     const body = {
-      status: "Cancelled",
+      status: "Cancelled", 
     };
     dispatch(changeOrderStatus(order._id, body));
   };
@@ -115,19 +121,19 @@ const OrderCard = (props) => {
           {/* OrderId - #{order._id} */}
         </Typography>
         <Typography gutterBottom variant="body1" color="textPrimary">
-          {role === "ROLE_USER" && `Ordered From - ${order.seller.name}`}
+          {role === "ROLE_USER" && `Order From - ${order.seller.name}`}
           {role === "ROLE_SELLER" &&
-            `Ordered By - ${order.user.name}, +91 ${order.user.address.phoneNo}`}
+            `Order By - ${order.user.name}, +91 ${order.user.address.phoneNo}`}
         </Typography>
         {role === "ROLE_USER" && (
           <Typography gutterBottom variant="body1" color="textPrimary">
-            Call - +91 {order.seller.phone}
+            { t("OrderCart.call")} - +91 {order.seller.phone}
           </Typography>
         )}
 
         {role === "ROLE_SELLER" && (
           <Typography gutterBottom variant="body1" color="textPrimary">
-            Address -{" "}
+            { t("OrderCart.address")} -{" "}
             {
               order.user.address.aptName + ", " + order.user.address.locality
               // (`${order.user.address.aptName}, ${order.user.address.locality}`,
@@ -139,7 +145,7 @@ const OrderCard = (props) => {
           <SummaryExpansion condition="Orders" items={order.items} />
         </div>
         <Typography gutterBottom variant="body1" color="textPrimary">
-          Ordered - {dayjs(order.createdAt).fromNow()}
+        { t("OrderCart.ordered")} - {dayjs(order.createdAt).fromNow()}
         </Typography>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <FiberManualRecordIcon
@@ -149,7 +155,7 @@ const OrderCard = (props) => {
             }
           />
           <Typography gutterBottom variant="body1" color="textPrimary">
-            Order {order.status}
+          { t("OrderCart.order")} {order.status}
           </Typography>
         </div>
         {role === "ROLE_USER" && order.status === "Placed" && (
@@ -158,29 +164,29 @@ const OrderCard = (props) => {
             onClick={handleCancel}
             disabled={order.status !== "Placed"}
           >
-            Cancel Order
+            { t("OrderCart.cancel_order")}
           </Button>
         )}
         {role === "ROLE_SELLER" && order.status === "Placed" && (
           <>
             <div style={{ display: "inline-block" }}>
               <Button className={classes.buttonCancel} onClick={handleCancel}>
-                Cancel Order
+              { t("OrderCart.cancel_order")}
               </Button>
               <Button className={classes.buttonAccept} onClick={handleAccept}>
-                Accept Order
+              { t("OrderCart.accept_order")} 
               </Button>
             </div>
           </>
         )}
         {role === "ROLE_SELLER" && order.status === "Accepted" && (
           <Button className={classes.buttonAccept} onClick={handleDelivery}>
-            Out For Delivery
+            { t("OrderCart.out_for_delivery")}
           </Button>
         )}
         {role === "ROLE_SELLER" && order.status === "Out For Delivery" && (
           <Button className={classes.buttonAccept} onClick={handleCompleted}>
-            Order Completed
+            { t("OrderCart.order_completed")}
           </Button>
         )}
         <br />

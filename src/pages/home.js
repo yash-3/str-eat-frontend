@@ -56,7 +56,7 @@ const Home = () => {
             <Grid item>
               <Typography variant="h5" className={classes.center} noWrap>
                 {/* Your favourite food, delivered with StrEAT&nbsp;&nbsp; */}
-                { t("DELIVERY") }
+                { t("ordering") }
                   <span style={{ fontSize: 40 }}>🍽</span>
               </Typography>
             </Grid>
@@ -70,7 +70,8 @@ const Home = () => {
                   restaurantMarkup
                 ) : (
                   <Typography variant="body1" className={classes.center} noWrap>
-                    Enter your location to view nearby restaurants
+                    { t("enter_location")}
+                    {/* Enter your location to view nearby restaurants */}
                   </Typography>
                 )}
               </Grid>

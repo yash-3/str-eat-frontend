@@ -85,31 +85,34 @@ export default function Footer() {
         ) : (
           <>
             <Typography variant="h4" component="p">
-              StrEAT for Business
+              { t("for_vendor")}
             </Typography>
             <Typography variant="body1" component="p">
-              Get more out of your business, without losing focus on what is
-              most important — delighting your customers
+              { t("company_moto")}
             </Typography>
             <br />
             <Link to="/addrestaurant">
-              <Button className={classes.buttonStyleOne}>Get Started</Button>
+              <Button className={classes.buttonStyleOne}>{ t("Buttons.get_started")}</Button>
             </Link>
           </>
         )}
       </Grid>
       <div>
-        <button type="button" onClick={() => changeLanguage("hi")}>
+        {/* <button type="button" onClick={() => changeLanguage("hi")}>
           {t("translation:hi")}
-        </button>
+        </button> &nbsp;
+
+        <button type="button" onClick={() => changeLanguage("gu")}>
+          {t("translation:gu")}
+        </button> &nbsp;
 
         <button type="button" onClick={() => changeLanguage("en")}>
           {t("translation:en")}
-        </button>
+        </button> */}
 
-        <h1>{t("Login")}</h1>
+        {/* <h1>{t("Buttons.login")}</h1>
 
-        <p>{t("DELIVERY")}</p>
+        <p>{t("delivery")}</p> */}
       </div>
       {/* <Grid item xs={12} sm={3} className={classes.innerCont}>
         <Typography variant="h5" component="p">

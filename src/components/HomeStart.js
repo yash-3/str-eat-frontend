@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import { useTranslation } from "react-i18next";
+
 import cover from "../images/food_upscaled.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -56,22 +58,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomeStart = () => {
+  const { t, i18n } = useTranslation(["translation"]);
   const classes = useStyles();
   return (
     <section className={classes.presentation}>
       <div className={classes.introduction}>
         <Typography className={classes.safeFood} noWrap>
-          StrEAT Food
+        {t("food")}
         </Typography>
         <Typography className={classes.delivery} noWrap>
-          DELIVERY
+        {t("ordering")}
         </Typography>
         <Typography variant="body2" className={classes.paragraph}>
-          Order Lip Smacking food from your favourite food outlet withing a matter of a few clicks!
-          TrEAT Yourself with StrEAT!
+        {t("company_discription")}
         </Typography>
         <Button variant="outlined" className={classes.ctaOrder}>
-          ORDER NOW
+        {t("Buttons.order_now")}
         </Button>
       </div>
       <div className={classes.cover}>

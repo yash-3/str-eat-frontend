@@ -12,6 +12,9 @@ import Button from "@material-ui/core/Button";
 
 import { logoutAction } from "../redux/actions/authActions";
 
+import { useTranslation } from "react-i18next";
+import { Dropdown } from "semantic-ui-react";
+
 const useStyles = makeStyles(() => ({
   appBar: {
     backgroundColor: "#e8ede1",
@@ -49,6 +52,18 @@ export default function AppBarPrimary() {
     dispatch(logoutAction(history));
   };
 
+  const { t, i18n } = useTranslation(["translation"]);
+
+  const changeLanguage = (code) => {
+    i18n.changeLanguage(code);
+  };
+
+  const languageOptions = [
+    { key: "English", text: "English", value: "en" },
+    { key: "Hindi", text: "Hindi", value: "hi" },
+    { key: "Gujarati", text: "Gujarati", value: "gu" }
+  ];
+
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
@@ -57,21 +72,50 @@ export default function AppBarPrimary() {
             <span className={classes.name}>StrEAT</span>
           </Typography>
         </Link>
+
+        <div>
+        <button type="button" onClick={() => changeLanguage("hi")}>
+          {t("translation:hi")}
+        </button> &nbsp;
+
+        <button type="button" onClick={() => changeLanguage("gu")}>
+          {t("translation:gu")}
+        </button> &nbsp;
+
+        <button type="button" onClick={() => changeLanguage("en")}>
+          {t("translation:en")}
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+            
+            {/* <Dropdown
+              button
+              className='icon'
+              floating
+              labeled
+              icon='world'
+              options={languageOptions}
+              search
+              text='Select Language'
+              onChange={changeLanguage("en")}
+            /> */}
+        
+      
+
         {authenticated ? (
           role === "ROLE_SELLER" ? (
             <div className={classes.buttons}>
               <Typography className={classes.buttonStyles}>
-                Seller Dashboard
+              {t("seller_dashboard")}
               </Typography>
               <Link to="/seller/orders">
-                <Button className={classes.buttonStyles}>Orders</Button>
+                <Button className={classes.buttonStyles}>{ t("Buttons.orders")}</Button>
               </Link>
               <Button
                 onClick={handleLogout}
                 className={classes.buttonStyles}
                 variant="outlined"
               >
-                Logout
+                { t("Buttons.logout")}
               </Button>
             </div>
           ) : (
@@ -80,30 +124,31 @@ export default function AppBarPrimary() {
                 Hello, {firstName} {lastName}
               </Typography>
               <Link to="/orders">
-                <Button className={classes.buttonStyles}>Orders</Button>
+                <Button className={classes.buttonStyles}>{ t("Buttons.orders")}</Button>
               </Link>
               <Link to={{ pathname: "/cart", state: { address: address } }}>
-                <Button className={classes.buttonStyles}>Cart</Button>
+                <Button className={classes.buttonStyles}>{ t("Buttons.cart")}</Button>
               </Link>
               <Button
                 onClick={handleLogout}
                 className={classes.buttonStyles}
                 variant="outlined"
               >
-                Logout
+                { t("Buttons.logout")}
               </Button>
             </div>
           )
         ) : (
           <div className={classes.buttons}>
             <Link to="/login">
-              <Button className={classes.buttonStyles}>Login</Button>
+              <Button className={classes.buttonStyles}>{ t("Buttons.login")}</Button>
             </Link>
             <Link to="/register">
               <Button className={classes.buttonStyles} variant="outlined">
-                Register
+              { t("Buttons.register")}
               </Button>
             </Link>
+            
           </div>
         )}
       </Toolbar>

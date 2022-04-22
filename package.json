@@ -14,7 +14,7 @@
     "jwt-decode": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-i18next": "^11.16.6",
+    "react-i18next": "^11.16.7",
     "react-places-autocomplete": "^7.2.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
@@ -23,6 +23,7 @@
     "react-swipeable-views-utils": "^0.13.9",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^2.1.2",
     "socket.io-client": "^2.3.0"
   },
   "scripts": {
